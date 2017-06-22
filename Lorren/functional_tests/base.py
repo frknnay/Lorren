@@ -12,10 +12,6 @@ class FunctionalTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
-        ## We create a random book to be able to test some of our functionalities
-        Book.objects.create(
-            title="Silmarillion", writer='J.R.R Tolkien', year=1885
-        )
 
     def tearDown(self):
         self.browser.quit()
@@ -29,3 +25,9 @@ class FunctionalTest(LiveServerTestCase):
                 if time.time() - start_time > MAX_WAIT:
                     raise e
                 time.sleep(0.5)
+
+    def create_a_book(self):
+        book = Book.objects.create(
+                    title="Silmarillion", writer='J.R.R Tolkien', year=1885
+                )
+        return book
