@@ -28,5 +28,5 @@ class NewVisitorTest(FunctionalTest):
 
         # He also can see the name of the writer of the book in that page
         self.wait_for(
-            lambda: self.assertIn(book.writer, self.browser.find_element_by_tag_name('body').text)
+            lambda: self.assertIn(book.author, self.browser.find_element_by_tag_name('body').text)
         )

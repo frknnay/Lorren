@@ -28,6 +28,6 @@ class FunctionalTest(LiveServerTestCase):
 
     def create_a_book(self):
         book = Book.objects.create(
-                    title="Silmarillion", writer='J.R.R Tolkien', year=1885
+                    title="Silmarillion", author='J.R.R Tolkien', year=1885
                 )
         return book
