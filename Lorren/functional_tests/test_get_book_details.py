@@ -1,11 +1,11 @@
-from .base import FunctionalTest,
+from .base import FunctionalTest
 
 
 class NewVisitorTest(FunctionalTest):
 
     def test_can_get_details_of_a_book(self):
         ## We create a random book to be able to test some of our functionalities
-        book = self.create_a_book()
+        book = self.create_a_book_with_author()
 
         # Kvothe heards about a web-app called Lorren.
         # He goes to check out it's homepage.
@@ -28,5 +28,5 @@ class NewVisitorTest(FunctionalTest):
 
         # He also can see the name of the writer of the book in that page
         self.wait_for(
-            lambda: self.assertIn(book.author, self.browser.find_element_by_tag_name('body').text)
+            lambda: self.assertIn(book.author.name, self.browser.find_element_by_tag_name('body').text)
         )

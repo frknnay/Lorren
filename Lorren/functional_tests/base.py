@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 
 from books.models import Book
+from authors.models import Author
 
 MAX_WAIT = 10
 
@@ -26,8 +27,9 @@ class FunctionalTest(LiveServerTestCase):
                     raise e
                 time.sleep(0.5)
 
-    def create_a_book(self):
+    def create_a_book_with_author(self):
+        author = Author.objects.create(name='J.R.R. Tolkien')
         book = Book.objects.create(
-                    title="Silmarillion", author='J.R.R Tolkien', year=1885
+                    title='Silmarillion', author=author, year=1977
                 )
         return book
