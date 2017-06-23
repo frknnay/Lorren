@@ -8,4 +8,4 @@ class BookModelTest(TestCase):
         author = Author.objects.create(name='Ursula Poznanski')
         book = Book(title='Erebos',author=author,year=2010)
         book.save()
-        self.assertIn(book, author.item_set.all())
+        self.assertIn(book, author.book_set.all())
