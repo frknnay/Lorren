@@ -7,7 +7,7 @@ class NewVisitorTest(FunctionalTest):
         ## We create a random book to be able to test some of our functionalities
         book = self.create_a_book_with_author()
 
-        # Kvothe heards about a web-app called Lorren.
+        # Kvothe hears about a web-app called Lorren.
         # He goes to check out it's homepage.
         self.browser.get(self.live_server_url)
 
