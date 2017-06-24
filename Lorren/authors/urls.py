@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from authors import views
 
+app_name = 'authors'
+
 urlpatterns = [
     url(r'^$', views.list_authors, name='list_authors'),
     url(r'^show/(\d+)/$', views.show_author, name='show_author'),
