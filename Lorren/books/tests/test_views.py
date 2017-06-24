@@ -19,5 +19,5 @@ class BookDetailPageTest(TestCase):
     def test_renders_detail_page_template(self):
         author = Author.objects.create(name='J.R.R. Tolkien')
         book = Book.objects.create(title='Hobbit', author=author, year=1937)
-        response = self.client.get(f'/books/{book.id}/')
+        response = self.client.get(f'/books/show/{book.id}/')
         self.assertTemplateUsed(response, 'books/book_detail.html')

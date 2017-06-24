@@ -2,5 +2,5 @@ from django.conf.urls import url
 from books import views
 
 urlpatterns = [
-    url(r'^(\d+)/$', views.book_details, name="book_details"),
+    url(r'^show/(\d+)/$', views.show_book, name="show_book"),
 ]

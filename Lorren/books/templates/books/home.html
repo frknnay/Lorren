@@ -4,7 +4,7 @@
   <table class="table">
       {% for book in books %}
         <tr>
-          <td><a href="/books/{{ book.id }}">{{ book.title }}</a></td>
+          <td><a href="{% url 'show_book' book.id %}">{{ book.title }}</a></td>
         </tr>
         {% endfor %}
   </table>

@@ -11,10 +11,8 @@ class NewVisitorTest(FunctionalTest):
         # He goes to check out it's homepage.
         self.browser.get(self.live_server_url)
 
-        # He notices that the page title and header mention Lorren app.
+        # He notices that the page title mention Lorren app.
         self.assertIn('Lorren', self.browser.title)
-        header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('Lorren', header_text)
 
         # Then he sees that there is a list of some books and he clicks on the
         # name of first book.
@@ -24,8 +22,9 @@ class NewVisitorTest(FunctionalTest):
 
         # He also notices that he redirected to a page with the details of book
         # And he sees that the name of the book is written in page title
-        self.assertIn(book.title, self.browser.title)
-
+        self.wait_for(
+            lambda: self.assertIn(book.title, self.browser.title)
+        )
         # He also can see the name of the writer of the book in that page
         self.wait_for(
             lambda: self.assertIn(book.author.name, self.browser.find_element_by_tag_name('body').text)
