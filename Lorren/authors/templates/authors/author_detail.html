@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
-{% block table %}
+{% block container %}
   {% if author %}
-    {{author.name}}
-    {% for author_book in author_books %}
-      {{author_book.title}}
-    {% endfor %}
+    <h3>Name: {{ author.name }}</h3>
+    <h4>Books:</h4>
+    <table class="table">
+      {% for author_book in author_books %}
+        <tr>
+          <td><a href="{% url 'show_book' author_book.id %}">{{author_book.title}}</a></td>
+        </tr>
+      {% endfor %}
+    </table>
   {% endif %}
 {% endblock %}

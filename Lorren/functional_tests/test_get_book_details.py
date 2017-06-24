@@ -12,8 +12,9 @@ class NewVisitorTest(FunctionalTest):
         self.browser.get(self.live_server_url)
 
         # He notices that the page title mention Lorren app.
-        self.assertIn('Lorren', self.browser.title)
-
+        self.wait_for(
+            lambda: self.assertIn('Lorren', self.browser.title)
+        )
         # Then he sees that there is a list of some books and he clicks on the
         # name of first book.
         self.wait_for(

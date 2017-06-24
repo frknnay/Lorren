@@ -1,6 +1,9 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block table %}
+{% block page_title %}Lorren{% endblock %}
+
+{% block container %}
+<h3>Books</h3>
   <table class="table">
       {% for book in books %}
         <tr>

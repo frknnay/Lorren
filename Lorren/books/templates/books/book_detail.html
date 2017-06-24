@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{book.title}}</title>
-  </head>
-  <body>
-    <table>
-      <tr>
-        <td>{{book.title}}</td>
-      </tr>
-      <tr>
-        <td>{{book.author}}</td>
-      </tr>
-      <tr>
-        <td>{{book.year}}</td>
-      </tr>
-    </table>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block page_title %}{{ book.title }}{% endblock %}
+
+{% block container %}
+  <table>
+    <tr>
+      <td>Title: </td>
+      <td>{{book.title}}</td>
+    </tr>
+    <tr>
+      <td>Author: </td>
+      <td><a href="{% url 'show_author' book.author.id %}">{{book.author}}</a></td>
+    </tr>
+    <tr>
+      <td>Year: </td>
+      <td>{{book.year}}</td>
+    </tr>
+  </table>
+{% endblock %}
