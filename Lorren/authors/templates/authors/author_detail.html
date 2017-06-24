@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block table %}
+  {% if author %}
+    {{author.name}}
+    {% for author_book in author_books %}
+      {{author_book.title}}
+    {% endfor %}
+  {% endif %}
+{% endblock %}
