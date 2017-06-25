@@ -29,3 +29,7 @@ def edit_author(request, author_id):
         return redirect('authors:show_author', author_id)
 
     return render(request, 'authors/edit_author.html', {'author': author})
+
+def delete_author(request, author_id):
+    Author.objects.get(id = author_id).delete()
+    return redirect('authors:list_authors')
