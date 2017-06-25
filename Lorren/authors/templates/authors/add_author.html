@@ -1,4 +1,13 @@
-<form class="" action="" method="post">
-  <input type="text" name="name" value="" id="id_name">
-  {% csrf_token %}
-</form>
+{% extends 'base.html' %}
+
+{% block container %}
+
+  <form class="form" action="" method="post">
+    <label for="id_name">Add new author</label>
+    <input type="text" name="name" value="" id="id_name" class="form-control">
+    <br>
+    <input type="submit" name="" value="Submit" class="btn">
+    {% csrf_token %}
+  </form>
+
+{% endblock %}

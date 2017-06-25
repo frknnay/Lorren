@@ -11,5 +11,7 @@
         <td><a href="{% url 'books:show_book' author_book.id %}">{{author_book.title}}</a></td>
       {% endfor %}
     </table>
+    <a href="{% url 'authors:edit_author' author.id %}">Edit</a>
+    <a href="{% url 'authors:delete_author' author.id %}">Delete</a>
   {% endif %}
 {% endblock %}
