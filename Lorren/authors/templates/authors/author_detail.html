@@ -7,8 +7,8 @@
     <table class="table">
       {% for author_book in author_books %}
         <tr>
-          <td><a href="{% url 'books:show_book' author_book.id %}">{{author_book.title}}</a></td>
         </tr>
+        <td><a href="{% url 'books:show_book' author_book.id %}">{{author_book.title}}</a></td>
       {% endfor %}
     </table>
   {% endif %}

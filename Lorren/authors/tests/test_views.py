@@ -18,3 +18,30 @@ class AuthorDetailPage(TestCase):
 
         self.assertContains(response, author.name)
         self.assertContains(response, author.book_set.all()[0])
+
+class AddNewAuthorPage(TestCase):
+
+    def test_uses_add_author_template(self):
+        response = self.client.get('/authors/new')
+        self.assertTemplateUsed(response, 'authors/add_author.html')
+
+class EditAuthorPage(TestCase):
+
+    def test_uses_edit_author_template(self):
+        author = Author.objects.create(name='Albert Camus')
+        response = self.client.get(f'/authors/show/{author.id}/edit')
+        self.assertTemplateUsed(response, 'authors/edit_author.html')
+
+    def test_edit_page_has_details_of_author(self):
+        author = Author.objects.create(name='Albert Camus')
+        response = self.client.get(f'/authors/show/{author.id}/edit')
+        self.assertContains(response, author.name)
+
+    def test_edit_page_can_edit_details_of_author(self):
+        author = Author.objects.create(name='Albert')
+        self.client.post(
+            f'/authors/show/{author.id}/edit',
+            data={'name': 'Albert Camus'}
+        )
+        author = Author.objects.get(id=author.id)
+        self.assertEqual(author.name, 'Albert Camus')
