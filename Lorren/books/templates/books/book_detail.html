@@ -17,4 +17,6 @@
       <td>{{book.year}}</td>
     </tr>
   </table>
+  <a href="{% url 'books:edit_book' book.id %}">Edit</a>
+  <a href="{% url 'books:delete_book' book.id %}">Delete</a>
 {% endblock %}

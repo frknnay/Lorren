@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+  <form class="form" action="" method="post">
+    <label for="id_name">Edit Book</label>
+    <input type="text" name="title" value="{{ book.title }}" id="id_name" class="form-control">
+    <br>
+    <input type="text" name="year" value="{{ book.year }}" id="id_name" class="form-control">
+    <br>
+    <input type="submit" name="" value="Submit" class="btn">
+    {% csrf_token %}
+  </form>
+
+{% endblock %}
