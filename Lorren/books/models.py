@@ -9,3 +9,8 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    book = models.ForeignKey(Book, blank=False)
+    rate = models.IntegerField(blank=False)
+    message = models.TextField()
