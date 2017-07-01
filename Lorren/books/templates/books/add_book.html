@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+  <form class="form" action="" method="post">
+    <label for="id_name">Title</label>
+    <input type="text" name="title" value="" id="id_title" class="form-control">
+    <br>
+    <label for="id_author">Author</label>
+    <select class="form-control" name="author" id="id_author">
+      <option disabled selected value> -- Select an author -- </option>
+      {% for author in authors %}
+        <option value="{{ author.id }}">{{ author.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="id_year">Year</label>
+    <input type="text" name="year" value="" id="id_year" class="form-control">
+    <br>
+    <input type="submit" name="" value="Submit" class="btn">
+    {% csrf_token %}
+  </form>
+
+{% endblock %}

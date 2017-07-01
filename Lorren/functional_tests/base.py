@@ -33,3 +33,7 @@ class FunctionalTest(StaticLiveServerTestCase):
                     title='Silmarillion', author=author, year=1977
                 )
         return book
+
+    def create_author(self, name):
+        author = Author.objects.create(name=name)
+        return author

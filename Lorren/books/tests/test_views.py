@@ -22,6 +22,13 @@ class BookDetailPageTest(TestCase):
         response = self.client.get(f'/books/show/{book.id}/')
         self.assertTemplateUsed(response, 'books/book_detail.html')
 
+class NewBookViewTest(TestCase):
+
+    def test_renders_add_book_page_template(self):
+        response = self.client.get('/books/new')
+        self.assertTemplateUsed(response, 'books/add_book.html')
+
+
 class EditBookViewTest(TestCase):
 
     def test_uses_edit_book_template(self):
