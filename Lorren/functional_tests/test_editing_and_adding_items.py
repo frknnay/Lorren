@@ -71,4 +71,25 @@ class BookTest(FunctionalTest):
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertIn('The Wise Man\'s Fear', page_text)
 
-        self.fail('finish test!')
+    def test_can_edit_existing_book(self):
+        ## To edit book, we first need to add one with an author.
+        wrong_author = self.create_author(name='J.K. Rowling')
+        correct_author = self.create_author(name='Christopher Paolini')
+        book = self.create_book(title='Eragon', author=wrong_author, year=2014)
+
+        # Kvothe realises that the book Eragon has wrong details so he wants to
+        # correct the mistakes.
+        self.browser.get(self.live_server_url + f'/books/show/{book.id}/edit')
+
+        drop_down_list = Select(self.browser.find_element_by_id('id_author'))
+        drop_down_list.select_by_visible_text(correct_author.name)
+
+        inputbox_year = self.browser.find_element_by_id('id_year')
+        inputbox_year.clear()
+        inputbox_year.send_keys('2004')
+        inputbox_year.send_keys(Keys.ENTER)
+
+        # Then he goes to Eragon's page to see if the mistakes are corrected
+        self.browser.get(self.live_server_url + f'/books/show/{book.id}/')
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertIn(correct_author.name, page_text)

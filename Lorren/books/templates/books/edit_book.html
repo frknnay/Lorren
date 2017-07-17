@@ -6,7 +6,15 @@
     <label for="id_name">Edit Book</label>
     <input type="text" name="title" value="{{ book.title }}" id="id_name" class="form-control">
     <br>
-    <input type="text" name="year" value="{{ book.year }}" id="id_name" class="form-control">
+    <label for="id_author">Author</label>
+    <select class="form-control" name="author" id="id_author">
+      <option disabled selected value> -- Select an author -- </option>
+      {% for author in authors %}
+        <option value="{{ author.id }}">{{ author.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <input type="text" name="year" value="{{ book.year }}" id="id_year" class="form-control">
     <br>
     <input type="submit" name="" value="Submit" class="btn">
     {% csrf_token %}

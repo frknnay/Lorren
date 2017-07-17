@@ -25,13 +25,15 @@ def new_book(request):
 
 def edit_book(request, book_id):
     book = Book.objects.get(id=book_id)
+    authors = Author.objects.all()
     if request.method == 'POST':
         book.title = request.POST['title']
+        book.author = Author.objects.get(id=request.POST['author'])
         book.year = request.POST['year']
         book.save()
         return redirect('books:show_book', book_id)
 
-    return render(request, 'books/edit_book.html', {'book': book})
+    return render(request, 'books/edit_book.html', {'book': book, 'authors': authors})
 
 def delete_book(request, book_id):
     Book.objects.get(id=book_id).delete()

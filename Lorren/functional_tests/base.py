@@ -37,3 +37,7 @@ class FunctionalTest(StaticLiveServerTestCase):
     def create_author(self, name):
         author = Author.objects.create(name=name)
         return author
+
+    def create_book(self, title, author, year):
+        book = Book.objects.create(title=title, author=author, year=year)
+        return book
