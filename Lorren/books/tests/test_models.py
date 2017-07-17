@@ -27,7 +27,7 @@ class BookModelTest(TestCase):
 class CommentModelTest(TestCase):
 
     def test_cannot_save_without_book(self):
-        comment = Comment(rate=8, message='Nice book.')
+        comment = Comment(rating=8, message='Nice book.')
         with self.assertRaises(ValidationError):
             comment.full_clean()
 

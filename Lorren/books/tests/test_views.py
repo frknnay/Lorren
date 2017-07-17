@@ -48,7 +48,7 @@ class EditBookViewTest(TestCase):
         book = Book.objects.create(title='Chess', author=author, year=1941)
         self.client.post(
             f'/books/show/{book.id}/edit',
-            data={'title': 'The world of yesterday', 'year': 1942}
+            data={'title': 'The world of yesterday','author': author.id, 'year': 1942}
         )
         book = Book.objects.get(id=book.id)
         self.assertEqual(book.title, 'The world of yesterday')
