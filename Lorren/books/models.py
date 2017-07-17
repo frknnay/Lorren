@@ -13,5 +13,5 @@ class Book(models.Model):
 
 class Comment(models.Model):
     book = models.ForeignKey(Book, blank=False)
-    comment = models.TextField(max_length=300)
+    message = models.TextField(max_length=300)
     rating = models.IntegerField(default=0, blank=False)
