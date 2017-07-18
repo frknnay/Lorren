@@ -37,3 +37,10 @@ class CommentModelTest(TestCase):
         comment = Comment(book=book, message="Great book.")
         with self.assertRaises(ValidationError):
             comment.full_clean()
+
+    def test_can_rate_book(self):
+        author = Author.objects.create(name='Ursula Poznanski')
+        book = Book.objects.create(title='Erebos', author=author, year=2010)
+        self.assertEqual(book.rating, 0)
+        comment = Comment.objects.create(book=book, rating=9)
+        self.assertEqual(book.rating, comment.rating)
