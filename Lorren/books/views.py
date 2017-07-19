@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-from books.models import Book
+from books.models import Book, Comment
 from authors.models import Author
 
 def home_page(request):
@@ -38,3 +38,10 @@ def edit_book(request, book_id):
 def delete_book(request, book_id):
     Book.objects.get(id=book_id).delete()
     return redirect('home_page')
+
+def rate_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    if request.method == 'POST':
+        Comment.objects.create(book=book,rating=request.POST['rating'])
+
+    return redirect('books:show_book', book_id)

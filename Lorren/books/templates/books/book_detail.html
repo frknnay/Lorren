@@ -3,7 +3,7 @@
 {% block page_title %}{{ book.title }}{% endblock %}
 
 {% block container %}
-  <table>
+  <table class="table">
     <tr>
       <td>Title: </td>
       <td>{{book.title}}</td>
@@ -16,7 +16,24 @@
       <td>Year: </td>
       <td>{{book.year}}</td>
     </tr>
+    <tr>
+      <td>Rate: </td>
+        <td>
+          <label id="id_book_rate">{{ book.rating }}</label>
+        </td>
+    </tr>
   </table>
   <a href="{% url 'books:edit_book' book.id %}">Edit</a>
   <a href="{% url 'books:delete_book' book.id %}">Delete</a>
+  <br><br>
+  <form class="" action="rate" method="post">
+    <select class="" name="rating" id="id_rate_point">
+      <option disabled selected value> -- Choose a point -- </option>
+      {% for i in 'xxxxxxxxxx' %}
+        <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" id="id_rate_btn" name="" value="Rate">
+      {% csrf_token %}
+    </form>
 {% endblock %}
