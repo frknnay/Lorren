@@ -5,7 +5,7 @@ from books.models import Book, Comment
 from authors.models import Author
 
 def home_page(request):
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('title')
     return render(request, 'books/home.html',{'books': books})
 
 def show_book(request, book_id):

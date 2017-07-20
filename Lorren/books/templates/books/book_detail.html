@@ -3,11 +3,8 @@
 {% block page_title %}{{ book.title }}{% endblock %}
 
 {% block container %}
+<h3>{{ book.title }}</h3>
   <table class="table">
-    <tr>
-      <td>Title: </td>
-      <td>{{book.title}}</td>
-    </tr>
     <tr>
       <td>Author: </td>
       <td><a href="{% url 'authors:show_author' book.author.id %}">{{book.author}}</a></td>
@@ -17,16 +14,16 @@
       <td>{{book.year}}</td>
     </tr>
     <tr>
-      <td>Rate: </td>
+      <td>Rating: </td>
         <td>
-          <label id="id_book_rate">{{ book.rating }}</label>
+          <label id="id_book_rate">{% if book.rating <= 0 %}This book hasn't rated yet.{% else %}{{book.rating}}{% endif %}</label>
         </td>
     </tr>
   </table>
   <a href="{% url 'books:edit_book' book.id %}">Edit</a>
   <a href="{% url 'books:delete_book' book.id %}">Delete</a>
   <br><br>
-  <form class="" action="rate" method="post">
+  <form class="form" action="rate" method="post">
     <select class="" name="rating" id="id_rate_point">
       <option disabled selected value> -- Choose a point -- </option>
       {% for i in 'xxxxxxxxxx' %}

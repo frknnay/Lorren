@@ -13,9 +13,12 @@
       <nav class="navbar navbar-default" role='navigation'>
         <div class="container-fluid">
           <a href="/" class="navbar-brand">Lorren</a>
-          <ul class="navbar-nav mr-auto">
-             <li class="nav-item">
+          <ul class="nav navbar-nav">
+             <li>
                <a class="nav-link" href="{% url 'authors:list_authors'%}">Authors</a>
+             </li>
+             <li>
+               <a class="nav-link" href="{% url 'books:list_books'%}">Books</a>
              </li>
            </ul>
         </div>

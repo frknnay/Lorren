@@ -4,7 +4,7 @@ from authors.models import Author
 
 
 def list_authors(request):
-    authors = Author.objects.all()
+    authors = Author.objects.all().order_by('name')
     return render(request, 'authors/author_list.html', {'authors': authors})
 
 def show_author(request, author_id):

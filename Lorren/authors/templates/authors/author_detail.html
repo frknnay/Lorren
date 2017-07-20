@@ -2,14 +2,21 @@
 
 {% block container %}
   {% if author %}
-    <h3>Name: {{ author.name }}</h3>
-    <h4>Books:</h4>
+    <h3>{{ author.name }}</h3>
+
     <table class="table">
-      {% for author_book in author_books %}
+      <thead>
         <tr>
+          <th>Books</th>
         </tr>
-        <td><a href="{% url 'books:show_book' author_book.id %}">{{author_book.title}}</a></td>
-      {% endfor %}
+      </thead>
+      <tbody>
+        {% for author_book in author_books %}
+          <tr>
+            <td><a href="{% url 'books:show_book' author_book.id %}">{{author_book.title}}</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
     <a href="{% url 'authors:edit_author' author.id %}">Edit</a>
     <a href="{% url 'authors:delete_author' author.id %}">Delete</a>
